@@ -1,16 +1,20 @@
+import AppBarChart from "@/components/Charts/AppBarChart";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className=" flex items-center justify-center w-screen h-screen ">
-      <Button
-        className="hover:cursor-pointer"
-        variant={"destructive"}
-        size={"lg"}
-      >
-        Click Me
-      </Button>{" "}
+    <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4">
+      <div className="bg-primary-foreground p-4 rounded-lg  lg:col-span-2 xl:col-span-1 2xl:col-span-2">
+        <AppBarChart />
+      </div>
+      <div className="bg-primary-foreground p-4 rounded-lg   ">text</div>
+      <div className="bg-primary-foreground p-4 rounded-lg   ">text</div>
+      <div className="bg-primary-foreground p-4 rounded-lg   ">text</div>
+      <div className="bg-primary-foreground p-4 rounded-lg   lg:col-span-2 xl:col-span-1">
+        text
+      </div>
+      <div className="bg-primary-foreground p-4 rounded-lg   ">text</div>
     </div>
   );
 }
