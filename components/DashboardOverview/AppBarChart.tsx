@@ -9,28 +9,44 @@ const chartData = [
   { month: "June", desktop: 214, mobile: 140 },
 ];
 
-import { Bar, BarChart, CartesianGrid } from "recharts";
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { Car } from "lucide-react";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#2563eb",
+    color: "var(--chart-1)",
   },
   mobile: {
     label: "Mobile",
-    color: "#60a5fa",
+    color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
 export default function AppBarChart() {
   return (
     <div>
-      <h1 className="text-3xl font-semibold mb-2">Total Revenue</h1>
+      <h1 className="text-lg font-medium  mb-6">Total Revenue</h1>
 
       <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            axisLine={false}
+            tickMargin={10}
+            tickFormatter={(val) => val.slice(0, 3)}
+          />
+          <YAxis tickLine={false} axisLine={false} tickMargin={10} />
+          <ChartTooltip content={<ChartTooltipContent />} />
+          <ChartLegend content={<ChartLegendContent />} />
           <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
           <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
         </BarChart>

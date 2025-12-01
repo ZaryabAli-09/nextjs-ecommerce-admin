@@ -18,12 +18,12 @@ import { SidebarTrigger } from "./ui/sidebar";
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   return (
-    <nav>
+    <nav className=" flex items-center justify-between  border-gray-200 p-4">
       {/* left  */}
       <SidebarTrigger />
       {/* button collapse */}
       {/* right  */}
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4">
         <Link href="/">Dashboard</Link>
 
         {/* theme menu  */}
