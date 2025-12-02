@@ -16,17 +16,14 @@ import Link from "next/link";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Payment = {
+export type User = {
   id: string;
-  amount: number;
+  avatar: string;
   fullName: string;
-  status: "pending" | "processing" | "success" | "failed";
   email: string;
-  userId: string;
+  status: "active" | "inactive";
 };
-
-//  Columns defining in data-table (it is shadcn comp and use tanstack table under the hood to render table)
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<User>[] = [
   {
     id: "no", // unique id for the column
     header: "No",
@@ -34,10 +31,13 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "fullName",
-    header: "fullName",
+    header: "Full Name",
   },
   {
-    // custom edit column  you can also edit header and cell examples provided below
+    accessorKey: "avatar",
+    header: "Avatar",
+  },
+  {
     accessorKey: "email",
     header: ({ column }) => {
       return (
@@ -62,12 +62,8 @@ export const columns: ColumnDef<Payment>[] = [
         <div
           className={cn(
             `p-1 rounded w-max text-xs `,
-            status === "pending"
-              ? "bg-amber-500 text-white"
-              : status === "success"
+            status === "active"
               ? "bg-green-500 text-white"
-              : status === "failed"
-              ? "bg-red-500 text-white"
               : "bg-gray-500 text-white"
           )}
         >
@@ -76,25 +72,11 @@ export const columns: ColumnDef<Payment>[] = [
       );
     },
   },
-  {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "PKR",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
-  },
 
   {
-    // we use id if we dont want to add header
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const user = row.original;
 
       return (
         <DropdownMenu>
@@ -106,18 +88,20 @@ export const columns: ColumnDef<Payment>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-
+            <DropdownMenuItem>
+              <Link href={`/users/${user.id}`}>Delete</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => navigator.clipboard.writeText(user.id)}
             >
-              Copy payment ID
+              Copy user ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link href={`/users/${payment.userId}`}>View customer</Link>
+              <Link href={`/users/${user.id}`}>View customer</Link>
             </DropdownMenuItem>
 
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>View user details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

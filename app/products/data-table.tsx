@@ -20,8 +20,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import React from "react";
 import { Input } from "@/components/ui/input";
 
 interface DataTableProps<TData, TValue> {
@@ -33,11 +33,10 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-
   const table = useReactTable({
     data,
     columns,
@@ -54,20 +53,18 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    // Data table
-    <div className="overflow-hidden rounded-md border">
+    <div className="rounded-md border">
       <div className="flex items-center py-4">
         {/* Filtering Email Input  */}
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter By Name..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
       </div>
-      {/* Table  */}
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -110,7 +107,6 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      {/* Pagination Buttons  */}
       <div className="flex items-center justify-center space-x-2 py-4">
         <Button
           variant="outline"

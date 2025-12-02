@@ -46,6 +46,16 @@ const items = [
     icon: <Inbox />,
   },
   {
+    title: "Users",
+    url: "/users",
+    icon: <Calendar />,
+  },
+  {
+    title: "Payments",
+    url: "/payments",
+    icon: <Calendar />,
+  },
+  {
     title: "Calendar",
     url: "#",
     icon: <Calendar />,
@@ -70,7 +80,7 @@ export default function AppSideBar() {
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link href="/">
-                <Image src="/next.svg" alt="logo" width={50} height={50} />
+                <Image src="/logo.png" alt="logo" width={50} height={50} />
                 <span>DASH.</span>
               </Link>
             </SidebarMenuButton>
@@ -95,50 +105,26 @@ export default function AppSideBar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
         <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupLabel>Products</SidebarGroupLabel>
           <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Project</span>
+            <Plus /> <span className="sr-only">Add Products</span>
           </SidebarGroupAction>
 
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/">
-                    <Projector /> All Projects
+                  <Link href="/products">
+                    <Projector /> All Products
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href="/">
-                    <Plus /> Add Project
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
-          <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Posts</span>
-          </SidebarGroupAction>
-
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/">
-                    <Projector /> All Posts
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/">
-                    <Plus /> Add Post{" "}
+                    <Plus /> Upload Product{" "}
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

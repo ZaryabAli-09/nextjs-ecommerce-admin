@@ -54,10 +54,8 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    // Data table
     <div className="overflow-hidden rounded-md border">
       <div className="flex items-center py-4">
-        {/* Filtering Email Input  */}
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -67,7 +65,6 @@ export function DataTable<TData, TValue>({
           className="max-w-sm"
         />
       </div>
-      {/* Table  */}
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -110,7 +107,6 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      {/* Pagination Buttons  */}
       <div className="flex items-center justify-center space-x-2 py-4">
         <Button
           variant="outline"

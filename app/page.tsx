@@ -5,6 +5,8 @@ import CardList from "@/components/DashboardOverview/CardList";
 
 export default function Home() {
   return (
+    // Dashboard Overview Page / Dashboard HomePage
+
     <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4">
       {/* Revenue Bar Chart */}
       <div className="bg-primary-foreground p-4 rounded-lg lg:col-span-2 2xl:col-span-2">
