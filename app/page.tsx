@@ -2,8 +2,6 @@ import AppAreaChart from "@/components/DashboardOverview/AppAreaChart";
 import AppBarChart from "@/components/DashboardOverview/AppBarChart";
 import AppPieChart from "@/components/DashboardOverview/AppPieChart";
 import CardList from "@/components/DashboardOverview/CardList";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -24,7 +22,7 @@ export default function Home() {
 
       {/* Card List */}
       <div className="bg-primary-foreground p-4 rounded-lg lg:col-span-2 2xl:col-span-2">
-        <CardList title="Popular Content" />
+        <CardList title="Popular Products" />
       </div>
     </div>
   );

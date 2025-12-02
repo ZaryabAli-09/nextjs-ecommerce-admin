@@ -19,11 +19,11 @@ import { useState } from "react";
 
 const EditUser = () => {
   const [form, setForm] = useState({
-    username: "john.doe",
+    fullName: "john.doe",
     email: "john.doe@gmail.com",
     phone: "+1 234 5678",
-    location: "New York, NY",
-    role: "admin",
+    address: "New York, NY",
+    city: "New",
   });
 
   const handleChange = (e: any) => {
@@ -46,7 +46,7 @@ const EditUser = () => {
               <label className="block mb-1 font-medium">Username</label>
               <Input
                 name="username"
-                value={form.username}
+                value={form.fullName}
                 onChange={handleChange}
               />
             </div>
@@ -68,26 +68,19 @@ const EditUser = () => {
               <label className="block mb-1 font-medium">Location</label>
               <Input
                 name="location"
-                value={form.location}
+                value={form.address}
                 onChange={handleChange}
               />
             </div>
 
-            {/* Role */}
+            {/* Location */}
             <div>
-              <label className="block mb-1 font-medium">Role</label>
-              <Select
-                onValueChange={(value) => setForm({ ...form, role: value })}
-                defaultValue={form.role}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Role" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="admin">Admin</SelectItem>
-                  <SelectItem value="user">User</SelectItem>
-                </SelectContent>
-              </Select>
+              <label className="block mb-1 font-medium">Location</label>
+              <Input
+                name="location"
+                value={form.city}
+                onChange={handleChange}
+              />
             </div>
 
             <Button type="submit">Submit</Button>
