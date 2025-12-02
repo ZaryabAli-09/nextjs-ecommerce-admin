@@ -33,6 +33,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { Sheet, SheetTrigger } from "./ui/sheet";
+import { Button } from "./ui/button";
+import AddProduct from "./AddProduct";
 
 const items = [
   {
@@ -109,7 +112,8 @@ export default function AppSideBar() {
         <SidebarGroup>
           <SidebarGroupLabel>Products</SidebarGroupLabel>
           <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Products</span>
+            <Plus />{" "}
+            <span className="sr-only">Upload and see all Products</span>
           </SidebarGroupAction>
 
           <SidebarGroupContent>
@@ -123,9 +127,14 @@ export default function AppSideBar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/">
-                    <Plus /> Upload Product{" "}
-                  </Link>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <Button variant="ghost" className="cursor-pointer">
+                        <Plus /> Add Product
+                      </Button>
+                    </SheetTrigger>
+                    <AddProduct />
+                  </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
